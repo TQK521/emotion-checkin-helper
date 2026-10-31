@@ -1,0 +1,30 @@
+# 用户数据（隐私红线）
+checkin_data*.json
+*_污染现场*.json
+
+# 项目宪法与交接（不入库）
+AGENTS.md
+docs/jiaojie/
+
+# 经验资产与历史归档（内部资产，不入库）
+docs/jingyan-zichan/
+archive/
+
+# 用户自存资产（不入库）
+docs/xiang mu quan jing/
+
+# 发布成品与构建产物
+release/
+*.spec
+build/
+dist/
+__pycache__/
+*.py[cod]
+
+# 验收脚本运行产物（脚本本身入库，截图/日志不入库）
+test/accept/*.png
+test/accept/*.txt
+test/accept/*.log
+_runlog*
+tmp*.json
+_word_tmp/
