@@ -1,0 +1,4 @@
+# pnpm 12 配置（设置新家在 pnpm-workspace.yaml）
+allowBuilds:
+  # eslint-import-resolver-typescript 的解析加速器（napi 原生模块，需要构建脚本）
+  unrs-resolver: true

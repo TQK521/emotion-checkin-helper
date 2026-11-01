@@ -1,0 +1,59 @@
+/* global.css —— 全局重置与基础样式 */
+@import "./tokens.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--col-text);
+  background-color: var(--col-bg);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--col-text);
+  margin: 0 0 0.5em;
+  font-weight: 600;
+}
+
+a {
+  color: var(--col-primary-dk);
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* 通用卡片 */
+.card {
+  background: var(--col-card);
+  border: 1px solid var(--col-line);
+  border-radius: var(--card-radius);
+  padding: 20px;
+}
+
+/* 通用 chip */
+.chip {
+  background: var(--col-chip);
+  color: var(--col-text);
+  border: 1px solid var(--col-line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 14px;
+}

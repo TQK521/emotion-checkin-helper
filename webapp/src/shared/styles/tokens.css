@@ -1,0 +1,27 @@
+/* tokens.css —— 护眼主题视觉令牌（对齐 Python theme.py，集中管理、可换肤） */
+:root {
+  /* 颜色 */
+  --col-bg: #fafaf8;
+  --col-card: #ffffff;
+  --col-primary: #88c9b0;
+  --col-primary-dk: #5da386;
+  --col-accent: #d9a38a;
+  --col-text: #444444;
+  --col-sub: #777777;
+  --col-line: #ededea;
+  --col-chip: #f2f1ec;
+  --col-soft: #e8f3ee;
+
+  /* 强度圆钮 */
+  --col-inten-on: #ffe14d;
+  --col-inten-glow: #fff3b0;
+
+  /* 圆角 / 尺寸 */
+  --card-radius: 16px;
+  --content-max: 2400px;
+  --content-min: 440px;
+  --inten-r: 16px;
+
+  /* 字体 */
+  --font-family: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+}

@@ -1,0 +1,4 @@
+[toolchain]
+# 锁定 Rust 工具链版本，保证所有开发/构建环境一致（Tauri 2 重构波0）
+channel = "1.99.1"
+profile = "default"
