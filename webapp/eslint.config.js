@@ -31,14 +31,14 @@ export default [
           alwaysTryTypes: true,
         },
       },
-      // 元素类型 = 架构分层，路径相对项目根
+      // 元素类型 = 架构分层，路径相对项目根（对齐 v2 目录树）
       "boundaries/elements": [
-        { type: "app", pattern: "src/*" },
+        { type: "app", pattern: "src/app/**" },
         { type: "core", pattern: "src/core/**" },
         { type: "shared", pattern: "src/shared/**" },
-        { type: "store", pattern: "src/stores/**" },
+        { type: "services", pattern: "src/services/**" },
         { type: "feature", pattern: "src/features/**" },
-        { type: "data", pattern: "src/data/**" },
+        { type: "data", pattern: "src/assets/data/**" },
       ],
     },
     rules: {
@@ -54,7 +54,7 @@ export default [
               allow: [
                 { to: { element: { type: "core" } } },
                 { to: { element: { type: "shared" } } },
-                { to: { element: { type: "store" } } },
+                { to: { element: { type: "services" } } },
                 { to: { element: { type: "feature" } } },
                 { to: { element: { type: "data" } } },
               ],
@@ -65,24 +65,26 @@ export default [
               allow: [
                 { to: { element: { type: "core" } } },
                 { to: { element: { type: "shared" } } },
-                { to: { element: { type: "store" } } },
+                { to: { element: { type: "services" } } },
                 { to: { element: { type: "data" } } },
               ],
             },
-            // store → core/shared
+            // services：端口/适配器/导入器引用 core 契约与 shared 工具
             {
-              from: { element: { type: "store" } },
+              from: { element: { type: "services" } },
               allow: [
                 { to: { element: { type: "core" } } },
                 { to: { element: { type: "shared" } } },
+                { to: { element: { type: "services" } } },
               ],
             },
-            // core 内部 + shared
+            // core：内部自洽 + shared 工具 + services 端口（CheckinStore 注入 StoragePort）
             {
               from: { element: { type: "core" } },
               allow: [
                 { to: { element: { type: "core" } } },
                 { to: { element: { type: "shared" } } },
+                { to: { element: { type: "services" } } },
               ],
             },
             // shared 只依赖 shared
