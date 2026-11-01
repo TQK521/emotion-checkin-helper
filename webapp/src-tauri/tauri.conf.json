@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "webapp",
+  "productName": "xuexiqingxudaka",
   "version": "0.1.0",
   "identifier": "com.tqk.emotioncheckin",
   "build": {
@@ -12,9 +12,11 @@
   "app": {
     "windows": [
       {
-        "title": "webapp",
-        "width": 800,
-        "height": 600
+        "title": "学习情绪打卡 · 随时记录",
+        "width": 1200,
+        "height": 800,
+        "minWidth": 900,
+        "minHeight": 640
       }
     ],
     "security": {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // App 根组件：导航 + 路由出口（内容区居中限宽）
 import NavBar from "@/shared/ui/NavBar.vue";
+import ImportWizard from "@/app/components/ImportWizard.vue";
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import NavBar from "@/shared/ui/NavBar.vue";
         <RouterView />
       </div>
     </main>
+    <ImportWizard />
   </div>
 </template>
 

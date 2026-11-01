@@ -1,8 +1,8 @@
 [package]
-name = "webapp"
+name = "xuexiqingxudaka"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "学习情绪打卡助手 · Web 全栈 PC 版（v2）"
+authors = ["tqk"]
 edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -20,8 +20,10 @@ tauri-build = { version = "2", features = [] }
 [dependencies]
 tauri = { version = "2", features = [] }
 tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+chrono = "0.4"
 
 
 # Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
