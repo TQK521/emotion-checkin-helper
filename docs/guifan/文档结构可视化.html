@@ -1,0 +1,77 @@
+<html style="margin:0;padding:0;">
+<title>学习情绪打卡 · 重构后项目文档结构</title>
+<div style="width:100%;box-sizing:border-box;font-family:'Microsoft YaHei',sans-serif;background:#f6f8fa;padding:20px 24px;color:#1f2328;">
+  <div style="font-size:22px;font-weight:700;margin-bottom:4px;">学习情绪打卡 · 重构后项目文档结构</div>
+  <div style="font-size:13px;color:#57606a;margin-bottom:14px;">v2 全栈重构（HTML/CSS+TS+Vue3+Tauri 2）落位后的目录全貌 · 2026-11-01 · 可点击小三角展开/收起子层</div>
+  <div style="font-size:13px;color:#57606a;margin-bottom:14px;">图例：<span style="background:#ddf4ff;color:#0969da;padding:1px 6px;border-radius:4px;">webapp v2 主线</span>&nbsp;<span style="background:#dafbe1;color:#1a7f37;padding:1px 6px;border-radius:4px;">docs 资产体系</span>&nbsp;<span style="background:#fff1e5;color:#bc4c00;padding:1px 6px;border-radius:4px;">release 成品</span>&nbsp;<span style="background:#f6f8fa;color:#57606a;padding:1px 6px;border-radius:4px;border:1px solid #d8dee4;">src 旧版 Tk</span></div>
+
+  <div style="background:#fff;border:1px solid #d8dee4;border-radius:10px;padding:16px 18px;font-size:14px;line-height:1.55;">
+    <div style="font-weight:700;font-size:16px;">📁 桌面小程序开发 <span style="font-weight:400;color:#57606a;font-size:12px;">（项目根 · git 仓库）</span></div>
+
+    <details open style="margin:8px 0 4px 22px;">
+      <summary style="cursor:pointer;font-weight:600;color:#57606a;">📄 根目录元文件（8+1）</summary>
+      <ul style="margin:6px 0 0 18px;padding-left:0;list-style:none;">
+        <li>AGENTS.md —— 全项目长期约束（唯一元文件，所有对话共同遵守）</li>
+        <li>README.md / CHANGELOG.md / CONTRIBUTING.md / LICENSE / SECURITY.md / requirements.txt / .gitignore</li>
+        <li><b>checkin_data.json —— 数据红线</b>（12 条 / SHA16=EDD323D3EC0B91ED，未污染）</li>
+      </ul>
+    </details>
+
+    <details style="margin:6px 0 4px 22px;">
+      <summary style="cursor:pointer;font-weight:600;color:#57606a;">📁 src/ —— 旧版 Tk 主线（v1.6.x 系列，保留）</summary>
+      <ul style="margin:6px 0 0 18px;padding-left:0;list-style:none;">
+        <li>main.py（入口）/ pages_home.py / pages_record.py / pages_tool.py / pages_manual.py（四页）</li>
+        <li>data_store.py（数据层）/ theme.py（主题）/ chapters_data.py / toolkit_data.py / ui_dialogs.py</li>
+      </ul>
+    </details>
+
+    <details open style="margin:6px 0 4px 22px;background:#ddf4ff;border-radius:8px;padding:6px 10px;">
+      <summary style="cursor:pointer;font-weight:700;color:#0969da;">📁 webapp/ —— v2 重构当前主线（HTML/CSS+TS+Vue3+Tauri 2）</summary>
+      <ul style="margin:8px 0 4px 18px;padding-left:0;list-style:none;">
+        <li>📁 src/app —— 装配层：main.ts（入口装配 providers）/ App.vue / router / components（ImportWizard 等）/ providers</li>
+        <li>📁 src/features —— 功能域 ×4：home / record / tool / manual</li>
+        <li>📁 src/core —— 公共契约：domain（类型）/ stats（统计）/ store（Pinia）</li>
+        <li>📁 src/services —— 存储适配器：storage.port.ts + tauri-storage / browser-storage / memory-storage / importer</li>
+        <li>📁 src/shared —— lib / styles / ui（仅依赖 shared）</li>
+        <li>📁 src-tauri —— Rust 壳：lib.rs（load/save/backup/pick_import_file 四命令）/ capabilities / Cargo.toml / tauri.conf.json / icons / target</li>
+        <li>⚙️ 工程配置：package.json / vite.config.ts / tsconfig.json / eslint.config.js / pnpm-workspace.yaml / index.html</li>
+        <li>🏷️ 绿色版 exe：target/release/xuexiqingxudaka.exe（SHA16=93F0C5605249BA97，4.5MB）</li>
+      </ul>
+    </details>
+
+    <details open style="margin:6px 0 4px 22px;background:#dafbe1;border-radius:8px;padding:6px 10px;">
+      <summary style="cursor:pointer;font-weight:700;color:#1a7f37;">📁 docs/ —— 规范 / 交接 / 资产中枢</summary>
+      <ul style="margin:8px 0 4px 18px;padding-left:0;list-style:none;">
+        <li>📁 guifan —— 00a 执行检查卡 / 00b 文档导航 / 1 开发流程 / 3~8 规范 / 交接说明 / 检查验收清单</li>
+        <li>📁 jiaojie —— <b>00-对话交接总账</b>（全项目唯一交接点，新账号上线先读）</li>
+        <li>📁 jingyan-zichan —— 10 复盘库（29 篇）/ 11 验收库（accept_lib）/ 12 调试经验 / 13 Word 库 / 14 经验流水账 / 15 历史任务与方案归档 / 代码资产库 / 指令模板库 / 通用经验库 / 语言转译档案</li>
+        <li>📁 moban —— 模板（环境配置说明 / 使用说明）</li>
+        <li>HANDOFF.md / 项目全景目录</li>
+      </ul>
+    </details>
+
+    <details style="margin:6px 0 4px 22px;background:#fff1e5;border-radius:8px;padding:6px 10px;">
+      <summary style="cursor:pointer;font-weight:700;color:#bc4c00;">📁 release/ —— 打包成品（只随用户指令打包）</summary>
+      <ul style="margin:8px 0 4px 18px;padding-left:0;list-style:none;">
+        <li>📁 xuexiqingxudaka_v1.6.10 —— PyInstaller 成品（exe 2017053B + _internal）+ <b>15 条继承数据</b>（FD1043936C8F5B92，验收通过）</li>
+        <li>📁 xuexiqingxudaka_v1.6.9 —— 旧版成品 + 备份数据</li>
+        <li>说明.txt</li>
+      </ul>
+    </details>
+
+    <details style="margin:6px 0 0 22px;">
+      <summary style="cursor:pointer;font-weight:600;color:#57606a;">📁 其余分区</summary>
+      <ul style="margin:6px 0 0 18px;padding-left:0;list-style:none;">
+        <li>scripts/ —— 启动与构建脚本（qidongdaka.bat 等）</li>
+        <li>test/ —— 验收脚本（_exp_*.py，复用 accept_lib）与截图产物</li>
+        <li>archive/ —— 过时规范与淘汰物</li>
+        <li>assets/ —— 静态资源</li>
+      </ul>
+    </details>
+  </div>
+
+  <div style="margin-top:12px;font-size:13px;color:#57606a;border-top:1px dashed #d8dee4;padding-top:8px;">
+    结构要点：① <b>webapp/</b> 是 v2 当前主线（前后端 + Rust 壳），旧版 <b>src/</b> 保留供 v1.6.x 维护；② <b>docs/</b> 是规范/交接/经验的唯一资产中枢（T0 门三查：流水账→资产库→交接总账）；③ <b>release/</b> 只放打包成品，打包须等用户指令；④ 绿色版正式交付目录 = <b>D:\EmotionCheckin</b>（避开桌面/中文路径，见复盘报告）。
+  </div>
+</div>
+</html>

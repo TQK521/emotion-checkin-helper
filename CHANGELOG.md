@@ -2,6 +2,13 @@
 
 本项目版本历史（详细决策/踩坑见 `docs/jiaojie/00-对话交接总账.md` 与 `docs/jingyan-zichan/14-jingyan-liushui.md`）。
 
+## v2（webapp 重构 · 2026-11-01）— 当前主线
+
+- **技术栈切换**：删除旧版 Python/Tk 技术栈（源码/成品/依赖，用户已备份），之后所有开发基于 webapp（HTML/CSS+TS+Vue3+Tauri 2）
+- 波3：Tauri 集成（Rust 四命令 load/save/backup/pick_import_file + 导入向导 + 绿色版 exe）实机回归通过
+- 绿色版正式交付：`D:\EmotionCheckin\`（WebView2 路径双敏感——exe 须纯英文非桌面目录）
+- v1.6.10 老版 exe 验收通过（继承 15 条数据 FD1043936C8F5B92，验收前后哈希未污染）
+
 ## v1.6.9（2026-10-27）— 正式版
 
 - 场景强度交互：打卡新增"场景 + 强度（1-5，默认 3）"，强度条荧光黄高亮
