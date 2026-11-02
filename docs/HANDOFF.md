@@ -3,7 +3,18 @@
 > 本文件为**交接速查**；完整历史与细节一律以 `docs/jiaojie/00-对话交接总账.md` 为准（唯一对话记录文件）。
 > 规则：每轮对话结束更新本文件 + 总账，随 git 提交推送；只追加不覆盖。
 
-## 最新状态（2026-10-31 · git 全量重建：清空历史、重传 GitHub）
+## 最新状态（2026-11-02 · webapp 主线 + 历史文件清理 + git 入 PATH + 文档标准化）
+
+| 项 | 内容 |
+|---|---|
+| 本轮任务 | 全项目文档标准化归档整理（用户确认方案 A 串行）：11 个 Tk 时代文档重写为 webapp 主线 + 复盘命名统一 + 新增《文档命名与归档规范》 |
+| 主线 | **webapp/**（Vite 8 + Vue 3.5 + TS + Pinia + vue-router + Vitest + Tauri 2，Rust 壳）；旧 Python/Tk 栈已删（用户保留备份，历史仅存 git） |
+| 历史清理 | 上一轮已删 21 项过时历史文件（15-历史归档任务卡/方案单/验收报告 + 过时规范 + test/accept v1610 旧产物），并清理 12 处断链引用（commit `0abf109`）；仅保留归档方案 2 份 + 唯一验收模板 `_exp_TEMPLATE_accept.py` |
+| 环境 | git 程序 `D:\Git\cmd` **已加入用户级 PATH**（2026-11-02 持久化）；当前会话宿主进程不刷新，git 仍须完整路径 `D:\Git\cmd\git.exe`，重启豆包后可直接 `git` |
+| 交付目录 | 绿色版 `D:\EmotionCheckin\`（纯英文非桌面目录，WebView2 路径双敏感）；正式数据 `%APPDATA%\com.tqk.emotioncheckin\` |
+| 待办 | 文档标准化收尾：全局引用检查 0 命中 → git commit；push 计数以实际 commit 数计（约束十五：攒 5 次 push） |
+
+## 上一轮（2026-10-31 · git 全量重建：清空历史、重传 GitHub）
 
 | 项 | 内容 |
 |---|---|
@@ -41,9 +52,10 @@
 | 执行方式 | 方案 A 串行自干（未委派）；注明"单点小改自干+无并行空间判定" |
 | 待办 | git commit 未做（5 src 改 + pages_manual.py + 3 验收脚本 + 4 截图未暂存）；提交前 `git diff --cached --stat` |
 
-## 常规信息（不变）
+## 常规信息（webapp 主线）
 
-- 启动：`py -3.13 src/main.py` 或 `scripts/qidongdaka.bat`（**禁用裸 python**，沙箱 runtime 无 tkinter）
-- 当前版本 v1.6.9 体验迭代期，**禁止打包**（定版后才打包）
-- 用户偏好：交接必更新本文件+总账并 git 推送；经验沉淀进 14 流水账；算力评估先行；轻量任务只给浅档交付
-- git：远端 `https://github.com/TQK521/emotion-checkin-helper.git`（main）；必要时代理 `http://127.0.0.1:7897`
+- 开发：`cd webapp && pnpm install && pnpm dev`（Vite 热更新）；质量门 `pnpm typecheck` / `lint` / `test` / `build`
+- 当前版本 v2.0（webapp 重构，2026-11-01 起），体验迭代期**禁止打包**（定版后才 `pnpm tauri build`）
+- 绿色版交付目录 `D:\EmotionCheckin\`（纯英文非桌面目录）；正式数据 `%APPDATA%\com.tqk.emotioncheckin\`
+- 用户偏好：交接必更新本文件+总账并 git 提交；经验沉淀进 14 流水账；算力评估先行；轻量任务只给浅档交付
+- git：程序 `D:\Git\cmd`（已入用户 PATH，本会话内用完整路径）；远端 `https://github.com/TQK521/emotion-checkin-helper.git`（main）；必要时代理 `http://127.0.0.1:7897`

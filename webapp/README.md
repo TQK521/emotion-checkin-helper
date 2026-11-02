@@ -20,8 +20,9 @@
 | MSVC Build Tools | 17.x（VC.Tools + 一个 Windows SDK） | 仅打包需要 |
 | WebView2 | 系统自带 | 最终用户运行期唯一依赖（Win10/11 已内置） |
 
-> 本机 PATH 提示：`git` 在 `D:\Git\cmd`、node 在 `C:\Program Files\nodejs`、pnpm 在
-> `C:\Users\<用户>\AppData\Roaming\npm`、cargo 在 `C:\Users\<用户>\.cargo\bin`，
+> 本机 PATH 提示：`git` 在 `D:\Git\cmd`（**已加入用户级 PATH，2026-11-02 持久化**，
+> 新开终端/重启后可直接 `git`；旧终端会话仍须完整路径）；node 在 `C:\Program Files\nodejs`、
+> pnpm 在 `C:\Users\<用户>\AppData\Roaming\npm`、cargo 在 `C:\Users\<用户>\.cargo\bin`，
 > 若命令找不到请把对应目录加入 PATH 前缀。
 
 ## 二、安装依赖
