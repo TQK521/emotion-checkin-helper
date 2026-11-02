@@ -28,3 +28,6 @@ test/accept/*.log
 _runlog*
 tmp*.json
 _word_tmp/
+
+# 覆盖率产物（基线数值记入交接总账，生成物不入库）
+coverage/

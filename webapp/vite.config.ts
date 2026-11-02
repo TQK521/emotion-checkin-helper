@@ -42,5 +42,17 @@ export default defineConfig(() => ({
     globals: true,
     environment: "jsdom",
     include: ["src/**/*.{test,spec}.ts"],
+    // 覆盖率基线（核心约束十七.2：每版本里程碑 pnpm test --coverage 记基线）
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json-summary"],
+      reportsDirectory: "coverage",
+      include: ["src/**/*.ts"],
+      exclude: [
+        "src/**/*.{test,spec}.ts",
+        "src/main.ts",
+        "src/App.vue",
+      ],
+    },
   },
 }));
