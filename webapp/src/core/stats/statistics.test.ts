@@ -4,6 +4,7 @@
 import { describe, expect, it } from "vitest";
 import type { CheckinData } from "@/core/domain";
 import {
+  allEmotions,
   calcStreak,
   calendarDates,
   chapterOfToday,
@@ -11,6 +12,7 @@ import {
   greeting,
   monthDays,
   recordsOnDate,
+  sceneCounts,
   todayCount,
   topEmotions,
   weekRecords,
@@ -162,5 +164,49 @@ describe("fmtEmotions", () => {
 
   it("空情绪返回空串", () => {
     expect(fmtEmotions(rec("2026-11-01"))).toBe("");
+  });
+});
+
+describe("统计边界补丁（2026-11-02 分支覆盖）", () => {
+  it("calcStreak：end 当天无记录返回 0（前一天有也不跨）", () => {
+    const r = [rec("2026-10-31"), rec("2026-10-30")];
+    expect(calcStreak(data(r), "2026-11-01")).toBe(0);
+  });
+
+  it("monthDays：无匹配月份返回 0", () => {
+    expect(monthDays(data([rec("2026-10-01")]), "2026-11")).toBe(0);
+  });
+
+  it("recordsOnDate：无匹配日期返回空数组", () => {
+    expect(recordsOnDate(data([rec("2026-11-01")]), "2026-11-02")).toEqual([]);
+  });
+
+  it("chapterOfToday：chapterCount<=0 返回 0", () => {
+    expect(chapterOfToday(data([], "2026-10-01"), 0, "2026-11-01")).toBe(0);
+  });
+
+  it("chapterOfToday：start_date 在未来（days 为负）仍按模循环", () => {
+    // start=2026-11-01, today=2026-10-01：-31 天 → ((-31 % 70) + 70) % 70 = 39
+    expect(chapterOfToday(data([], "2026-11-01"), 70, "2026-10-01")).toBe(39);
+  });
+
+  it("fmtEmotions：旧字段 emotion（非数组）兼容", () => {
+    const old = { ts: "2026-11-01 08:00:00", date: "2026-11-01", time: "08:00", emotions: undefined, action: "", scene: "", intensity: 3, emotion: "开心" } as unknown as CheckinData["records"][number];
+    expect(fmtEmotions(old)).toBe("开心");
+    const empty = { ...old, emotion: undefined };
+    expect(fmtEmotions(empty)).toBe("");
+  });
+
+  it("allEmotions：内置 + 自定义对象形式 + 去重", () => {
+    const d = data([]);
+    const withCustom = { ...d, custom_emotions: [{ word: "惆怅" }, "平静", "惆怅"] } as CheckinData;
+    expect(allEmotions(withCustom, ["开心", "平静"])).toEqual(["开心", "平静", "惆怅"]);
+  });
+
+  it("sceneCounts：空 scene 被跳过", () => {
+    const d = data([rec("2026-10-26", ["开心"], "学习"), rec("2026-10-27")]);
+    const counts = sceneCounts(d, "2026-11-01");
+    expect(counts.get("学习")).toBe(1);
+    expect(counts.has("")).toBe(false);
   });
 });

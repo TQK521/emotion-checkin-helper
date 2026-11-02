@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "recorded_at": "2026-11-02",
+  "tests": 105,
+  "statements": 84.41,
+  "branches": 78.68,
+  "functions": 87.05,
+  "lines": 83.79,
+  "note": "分支补丁后更新（statistics/date 边界 16 用例，89 → 105）"
+}
